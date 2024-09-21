@@ -1,4 +1,5 @@
 import 'package:examen1_programovil/Models/news_model.dart';
+import 'package:examen1_programovil/Presentation/Themes/main_theme.dart';
 import 'package:examen1_programovil/Presentation/Widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -33,7 +34,7 @@ class _NoticiasScreenState extends State<NoticiasScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child:  Text('Noticias Importantes')),
+        title: const Center(child:  Text('Noticias Importantes', style: textStyle,)),
         backgroundColor: Colors.purple,
       ),
         drawer:appDrawer(context),
@@ -42,7 +43,7 @@ class _NoticiasScreenState extends State<NoticiasScreen> {
         itemBuilder: (context, index) {
           final noticia = noticiasList[index];
           return Card(
-            margin: EdgeInsets.all(15.0),
+            margin: EdgeInsets.all(30.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

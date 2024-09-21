@@ -1,4 +1,5 @@
 import 'package:examen1_programovil/Models/todos_model.dart';
+import 'package:examen1_programovil/Presentation/Themes/main_theme.dart';
 import 'package:examen1_programovil/Presentation/Widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -25,7 +26,7 @@ class _TodoScreenState extends State<TodoScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(child:  Text('Noticias Importantes')),
+        title: const Center(child:  Text('Tareas Pendientes', style: textStyle)),
         backgroundColor: Colors.purple,
       ),
         drawer:appDrawer(context),
@@ -33,15 +34,41 @@ class _TodoScreenState extends State<TodoScreen> {
         itemCount: todosList.length,
         itemBuilder: (context, index) {
           final todo = todosList[index];
-          return ListTile(
-            title: Text(todo.title),
-            subtitle: Text(
-              '${todo.fecha}\n${todo.body}',
-          )
+          return Container(
+            margin: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black), 
+              borderRadius: BorderRadius.circular(10), 
+            ),
+            child: ListTile(
+              title: Text(
+                todo.title,
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    todo.fecha,
+                    style: TextStyle(
+                      color: Colors.grey[700],
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    todo.body,
+                    style: const TextStyle(fontSize: 14),
+                  ),
+                ],
+              ),
+              contentPadding: const EdgeInsets.all(16),
+            ),
           );
-          }
-          ),
-      );
+        },
+      ),
+    );
   }
 }
     
