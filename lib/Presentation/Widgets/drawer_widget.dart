@@ -16,7 +16,7 @@ return Drawer(
         child: Text('Menu'),
       ),
       ListTile(
-        title: const Text('Inicio 1'),
+        title: const Text('Inicio'),
         onTap: () {
            Navigator.push(
           context,
